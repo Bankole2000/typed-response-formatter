@@ -1,5 +1,5 @@
 {
-  "name": "@neoncoder/typed-response",
+  "name": "@neoncoder/typed-service-response",
   "version": "0.0.2",
   "description": "",
   "main": "./build/index.js",
@@ -31,7 +31,11 @@
     "helper",
     "typed"
   ],
-  "author": "",
+  "author": {
+    "name": "Bankole Esan",
+    "email": "techybanky@gmail.com",
+    "url": "https://bankole2000.github.io/webpieces"
+  },
   "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
@@ -61,5 +65,9 @@
     "**/*.ts": [
       "eslint --fix"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Bankole2000/typed-response-formatter.git"
   }
 }
