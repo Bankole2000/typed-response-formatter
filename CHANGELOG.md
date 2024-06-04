@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Bankole2000/typed-response-formatter/compare/v0.0.3...v0.0.4) (2024-06-04)
+
+
+### 🐛 Bug Fixes
+
+* fixed requirement of keys in generic typing ([570a1e1](https://github.com/Bankole2000/typed-response-formatter/commits/570a1e1aed2ab6401b52e3e4de99a205f292b9a1))
+
+
+### 🚧 Build
+
+* rebuild with refactor ([cc46f7e](https://github.com/Bankole2000/typed-response-formatter/commits/cc46f7ea682dfa7c695eb06f2d826faa5e174605))
+
 ### [0.0.3](https://github.com/Bankole2000/typed-response-formatter/compare/v0.0.2...v0.0.3) (2024-06-03)
 
 
