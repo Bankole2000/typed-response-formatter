@@ -2,9 +2,9 @@ import { TStatusType } from "./statusTypes";
 export interface AppEvent<Keys extends string, T = any> {
     type: string;
     desc?: string;
-    data?: ({
+    data?: (Partial<{
         [K in Keys]: T | T[];
-    } & dataMeta) | null;
+    }> & dataMeta) | null;
     meta?: any;
     eventId?: string;
     origin: string;
@@ -14,9 +14,9 @@ export type TEvent<Keys extends string, T = any> = {
     type: string;
     origin: string;
     desc?: string;
-    data?: ({
+    data?: (Partial<{
         [K in Keys]: T | T[];
-    } & dataMeta) | null;
+    }> & dataMeta) | null;
     meta?: any;
     eventId?: string;
     appToken?: string;
@@ -28,27 +28,27 @@ export interface dataMeta {
 }
 export type TFuncResult<Keys extends string, T = any> = {
     message?: string;
-    data?: ({
+    data?: (Partial<{
         [K in Keys]: T | T[];
-    } & dataMeta) | null;
+    }> & dataMeta) | null;
     error?: any | null;
     fix?: string;
 };
 export interface AppResponse<Keys extends string, T = any> {
     message: string;
     success: boolean;
-    data: ({
+    data: (Partial<{
         [K in Keys]: T | T[];
-    } & dataMeta) | null;
+    }> & dataMeta) | null;
     error?: any;
     errMessage?: string;
     statusCode: number;
 }
 export type TResponse<Keys extends string, T = any> = {
     message?: string;
-    data?: ({
+    data?: (Partial<{
         [K in Keys]: T | T[];
-    } & dataMeta) | null;
+    }> & dataMeta) | null;
     success?: boolean;
     error?: any | null;
     errMessage?: string;

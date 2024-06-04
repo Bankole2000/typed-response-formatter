@@ -3,9 +3,9 @@ import { TStatusType } from "./statusTypes";
 export declare class ServiceResponse<Keys extends string, T = any> implements AppResponse<Keys, T> {
     message: string;
     success: boolean;
-    data: ({
+    data: (Partial<{
         [K in Keys]: T | T[];
-    } & dataMeta) | null;
+    }> & dataMeta) | null;
     error?: unknown;
     fix?: string;
     newAccessToken?: string | null;

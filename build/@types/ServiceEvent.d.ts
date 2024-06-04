@@ -2,9 +2,9 @@ import { AppEvent, dataMeta, TEvent } from "./interfaces";
 export declare class ServiceEvent<K extends string, T = any> implements AppEvent<K, T> {
     type: string;
     origin: string;
-    data: ({
+    data: (Partial<{
         [k in K]: T | T[];
-    } & dataMeta) | null;
+    }> & dataMeta) | null;
     desc?: string;
     meta?: any;
     eventId?: string;

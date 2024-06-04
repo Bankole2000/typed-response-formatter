@@ -29,9 +29,9 @@ export type TStatus<Keys extends string, T = any> = {
     code: TStatusCode;
     message: string;
     fix?: string;
-    data?: ({
+    data?: (Partial<{
         [K in Keys]: T | T[];
-    } & dataMeta) | null;
+    }> & dataMeta) | null;
     error?: any;
     statusType: TStatusType;
 };

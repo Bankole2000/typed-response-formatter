@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceEvent = void 0;
 class ServiceEvent {
-    ;
     constructor({ type, origin = "UNKNOWN", data = null, desc = undefined, meta = undefined, eventId = undefined, appToken = undefined, accessToken = undefined, serviceQueues = [] }) {
         this.type = type;
         this.origin = origin;
