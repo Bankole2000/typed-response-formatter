@@ -5,7 +5,7 @@ export class ServiceEvent<K extends string, T = any> implements AppEvent<K, T> {
   
   origin: string;
   
-  data: ({ [k in K]: T | T[] } & dataMeta) | null;;
+  data: (Partial<{ [k in K]: T | T[] }> & dataMeta) | null;
 
   desc?: string;
   

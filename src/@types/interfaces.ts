@@ -3,7 +3,7 @@ import { TStatusType } from "./statusTypes";
 export interface AppEvent<Keys extends string, T = any> {
   type: string;
   desc?: string;
-  data?: ({ [K in Keys]: T | T[] } & dataMeta) | null;
+  data?: (Partial<{ [K in Keys]: T | T[] }> & dataMeta) | null;
   meta?: any;
   eventId?: string;
   origin: string;
@@ -14,7 +14,7 @@ export type TEvent<Keys extends string, T = any> = {
   type: string,
   origin: string,
   desc?: string,
-  data?: ({ [K in Keys]: T | T[] } & dataMeta) | null,
+  data?: (Partial<{ [K in Keys]: T | T[] }> & dataMeta) | null,
   meta?: any,
   eventId?: string,
   appToken?: string,
@@ -28,7 +28,7 @@ export interface dataMeta {
 
 export type TFuncResult<Keys extends string, T = any> = {
   message?: string,
-  data?: ({ [K in Keys]: T | T[] } & dataMeta) | null,
+  data?: (Partial<{ [K in Keys]: T | T[] }> & dataMeta) | null,
   error?: any | null,
   fix?: string,
 }
@@ -36,7 +36,7 @@ export type TFuncResult<Keys extends string, T = any> = {
 export interface AppResponse<Keys extends string, T = any> {
   message: string;
   success: boolean;
-  data: ({ [K in Keys]: T | T[] } & dataMeta) | null;
+  data: (Partial<{ [K in Keys]: T | T[] }> & dataMeta) | null;
   error?: any;
   errMessage?: string;
   statusCode: number;
@@ -44,7 +44,7 @@ export interface AppResponse<Keys extends string, T = any> {
 
 export type TResponse<Keys extends string, T = any> = {
   message?: string,
-  data?: ({ [K in Keys]: T | T[] } & dataMeta) | null;
+  data?: (Partial<{ [K in Keys]: T | T[] }> & dataMeta) | null;
   success?: boolean,
   error?: any | null,
   errMessage?: string,

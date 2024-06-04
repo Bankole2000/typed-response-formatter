@@ -6,7 +6,7 @@ export class ServiceResponse<Keys extends string, T = any> implements AppRespons
 
   success: boolean;
 
-  data: ({ [K in Keys]: T | T[] } & dataMeta) | null = null
+  data: (Partial<{ [K in Keys]: T | T[] }> & dataMeta) | null = null
 
   error?: unknown;
 

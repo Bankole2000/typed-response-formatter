@@ -29,7 +29,7 @@ export type TStatusCode = 200 | 201 | 204 | 400 | 401 | 402 | 403 | 404 |
 405 | 408 | 409 | 413 | 415 | 417 | 422 | 423 | 429 | 451 | 500 | 502 | 503 | 504 ;
 export type TStatusType = keyof typeof StatusType;
 
-export type TStatus<Keys extends string, T = any> = { code: TStatusCode, message: string, fix?: string, data?: ({ [K in Keys]: T | T[] } & dataMeta) | null, error?: any, statusType: TStatusType }
+export type TStatus<Keys extends string, T = any> = { code: TStatusCode, message: string, fix?: string, data?: (Partial<{ [K in Keys]: T | T[] }> & dataMeta) | null, error?: any, statusType: TStatusType }
 
 export const defaults: {[key in StatusType]: TStatus<any>} = {
   [StatusType.OK]: { code: 200, message: 'OK', statusType: StatusType.OK },
