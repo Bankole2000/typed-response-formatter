@@ -1,3 +1,4 @@
+export { CustomError, CustomErrorByCode, CustomErrorByType } from "./@types/ErrorResponse";
 export { Rez, IDataAccess, IServiceAccess, codeToStatusTypes, statusTypesToCode, statusCodeList } from "./serviceResponse";
 export { ServiceEvent } from "./@types/ServiceEvent";
 export { ServiceResponse } from "./@types/ServiceResponse";

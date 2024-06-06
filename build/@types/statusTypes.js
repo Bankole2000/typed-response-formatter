@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defaults = exports.StatusType = void 0;
+exports.defaults = exports.ErrorType = exports.StatusType = void 0;
 var StatusType;
 (function (StatusType) {
     StatusType["OK"] = "OK";
@@ -26,6 +26,40 @@ var StatusType;
     StatusType["ServiceUnavailable"] = "ServiceUnavailable";
     StatusType["GatewayTimeout"] = "GatewayTimeout";
 })(StatusType || (exports.StatusType = StatusType = {}));
+var ErrorType;
+(function (ErrorType) {
+    ErrorType["Unauthorized"] = "Unauthorized";
+    ErrorType["Forbidden"] = "Forbidden";
+    ErrorType["NotFound"] = "NotFound";
+    ErrorType["Timeout"] = "Timeout";
+    ErrorType["Conflict"] = "Conflict";
+    ErrorType["Locked"] = "Locked";
+    ErrorType["TooManyRequests"] = "TooManyRequests";
+    ErrorType["PaymentRequired"] = "PaymentRequired";
+    ErrorType["PayloadTooLarge"] = "PayloadTooLarge";
+    ErrorType["MethodNotAllowed"] = "MethodNotAllowed";
+    ErrorType["ExpectationFailed"] = "ExpectationFailed";
+    ErrorType["UnprocessableEntity"] = "UnprocessableEntity";
+    ErrorType["UnsupportedMediaType"] = "UnsupportedMediaType";
+    ErrorType["UnavailableForLegalReasons"] = "UnavailableForLegalReasons";
+    ErrorType["InternalServerError"] = "InternalServerError";
+    ErrorType["BadGateway"] = "BadGateway";
+    ErrorType["ServiceUnavailable"] = "ServiceUnavailable";
+    ErrorType["GatewayTimeout"] = "GatewayTimeout";
+})(ErrorType || (exports.ErrorType = ErrorType = {}));
+/**
+ * {@link TStatus} generator functions mapped by statusType
+ * @param {string} statusType - {@link TStatusType} (e.g. "OK", "NotFound", "Created" etc)
+ * @example
+ * // User created example
+ * const result = {...statusObj.Created, data: {user: newUser}}
+ * @example
+ * // NotFound rest api response example
+ * const result = {...statusObj.NotFound}
+ * const sr = Rez[result.statusType]({...result})
+ * return res.status(sr.statusCode).send(sr)
+ * @returns {CallableFunction<TStatus>}
+ */
 exports.defaults = {
     [StatusType.OK]: { code: 200, message: 'OK', statusType: StatusType.OK },
     [StatusType.Created]: { code: 201, message: 'Created', statusType: StatusType.Created },

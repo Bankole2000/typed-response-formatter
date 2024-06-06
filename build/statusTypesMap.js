@@ -4,15 +4,60 @@ exports.statusT = exports.statusC = exports.statusTypes = exports.statusCodes = 
 const responseFunctions_1 = require("./@types/responseFunctions");
 const statusTypes_1 = require("./@types/statusTypes");
 const serviceResponse_1 = require("./serviceResponse");
+/**
+ * {@link ServiceResponse} generator functions mapped by status type
+ * @param {string} statusType - {@link TStatusType} (e.g. "OK", "NotFound", "BadGateway" etc)
+ * @param {...TResponse} responseData - {@link TResponse} response data object
+ * @example
+ * // Returns an OK ServiceResponse with defaults
+ * const OKResFn = statusTypes.get("OK")
+ * const sr: ServiceResponse<any> = OKResFn({data: myData}: TResponse)
+ * @example
+ * // shorthand response with express
+ * const sr = statusTypes.get("Created")!({message: "successful"})
+ * return res.status(sr.statusCode).send(sr)
+ * @returns {CallableFunction<ServiceResponse>}
+ */
 const statusTypes = new Map();
 exports.statusTypes = statusTypes;
+/**
+ * {@link TStatus} generator functions mapped by statusType
+ * @param {string} statusType - {@link TStatusType} (e.g. "OK", "NotFound", "Created" etc)
+ * @param {...TFuncResult} fnResultData - {@link TFuncResult} function result data object
+ * @example
+ * const OKFnResult = statusTMap.get("OK")
+ * const sr: TStatus<any> = OKFnResult({data: myData}: TFuncResult)
+ * @example
+ * // shorthand with express using Rez object
+ * const result = statusTMap.get("Created")!({message: "successful"})
+ * const sr = Rez[result.statusType]({...result})
+ * return res.status(sr.statusCode).send(sr)
+ * @returns {CallableFunction<TStatus>}
+ */
 const statusT = new Map();
 exports.statusT = statusT;
+/**
+ * @desc Map of Callable TStatus generator functions by status code
+ * @param {number} statusCode - {@link TStatusCode} (e.g. 200, 404, 500) - status code of the {@link TStatus} object to be generated from the callback function
+ * @param {...TFuncResult} fnResultData - {@link TFuncResult} function result data object
+ * @example
+ * const OKFnResult = statusCMap.get("OK")
+ * const sr: TStatus<any> = OKFnResult({data: myData}: TFuncResult)
+ * @example
+ * // shorthand with express using Rez object
+ * const result = statusCMap.get("Created")!({message: "successful"})
+ * const sr = Rez[result.statusType]({...result})
+ * return res.status(sr.statusCode).send(sr)
+ * @returns {CallableFunction<TStatus>}
+ */
 const statusC = new Map();
 exports.statusC = statusC;
+function clone(a) {
+    return JSON.parse(JSON.stringify(a));
+}
 serviceResponse_1.statusCodeList.forEach(code => {
     statusC.set(code, ({ message, fix, data, error }) => {
-        const status = statusTypes_1.defaults[serviceResponse_1.codeToStatusTypes[code]];
+        const status = clone(statusTypes_1.defaults[serviceResponse_1.codeToStatusTypes[code]]);
         if (message)
             status.message = message;
         if (fix)
@@ -26,7 +71,7 @@ serviceResponse_1.statusCodeList.forEach(code => {
 });
 Object.keys(statusTypes_1.StatusType).forEach((type) => {
     statusT.set(type, ({ message, fix, data, error }) => {
-        const status = statusTypes_1.defaults[type];
+        const status = clone(statusTypes_1.defaults[type]);
         if (message)
             status.message = message;
         if (fix)
@@ -60,6 +105,20 @@ statusTypes.set(statusTypes_1.StatusType.InternalServerError, responseFunctions_
 statusTypes.set(statusTypes_1.StatusType.BadGateway, responseFunctions_1.BadGateway);
 statusTypes.set(statusTypes_1.StatusType.ServiceUnavailable, responseFunctions_1.ServiceUnavailable);
 statusTypes.set(statusTypes_1.StatusType.GatewayTimeout, responseFunctions_1.GatewayTimeout);
+/**
+ * Callable {@link ServiceResponse} generator functions mapped by status code
+ * @param {number} statusCode - {@link TStatusType} (e.g. 200, 404, 500) status code of the {@link ServiceResponse} to be generated from the callback function
+ * @param {...TResponse} responseData - {@link TResponse} response data object of the {@link ServiceResponse} to be generated from the callback function
+ * @example
+ * // Returns an OK ServiceResponse with defaults
+ * const OKServiceResFn = statusCodes.get(200)
+ * const sr: ServiceResponse<any> = OKServiceResFn({data: {id: "123"}})
+ * @example
+ * // shorthand response with express
+ * const sr = statusCodes.get(404)!({message: "not found"})
+ * return res.status(sr.statusCode).send(sr)
+ * @returns {CallableFunction<ServiceResponse>}
+ */
 const statusCodes = new Map();
 exports.statusCodes = statusCodes;
 statusCodes.set(200, responseFunctions_1.OK);
