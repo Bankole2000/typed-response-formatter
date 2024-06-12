@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/Bankole2000/typed-response-formatter/compare/v0.0.6...v0.0.7) (2024-06-12)
+
+
+### 🐛 Bug Fixes
+
+* added missing error code ([50ecb6e](https://github.com/Bankole2000/typed-response-formatter/commits/50ecb6e8b5d11091480333a8530ed13b2efc1c6d))
+
+
+### 🚧 Build
+
+* new build ([766fa1e](https://github.com/Bankole2000/typed-response-formatter/commits/766fa1ee10193ba30cf29f2e280008f54ffb4c03))
+
 ### [0.0.6](https://github.com/Bankole2000/typed-response-formatter/compare/v0.0.5...v0.0.6) (2024-06-06)
 
 
