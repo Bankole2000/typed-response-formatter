@@ -28,6 +28,7 @@ var StatusType;
 })(StatusType || (exports.StatusType = StatusType = {}));
 var ErrorType;
 (function (ErrorType) {
+    ErrorType["BadRequest"] = "BadRequest";
     ErrorType["Unauthorized"] = "Unauthorized";
     ErrorType["Forbidden"] = "Forbidden";
     ErrorType["NotFound"] = "NotFound";

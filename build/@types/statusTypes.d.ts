@@ -24,6 +24,7 @@ export declare enum StatusType {
     GatewayTimeout = "GatewayTimeout"
 }
 export declare enum ErrorType {
+    BadRequest = "BadRequest",
     Unauthorized = "Unauthorized",
     Forbidden = "Forbidden",
     NotFound = "NotFound",
