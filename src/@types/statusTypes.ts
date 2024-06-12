@@ -26,6 +26,7 @@ export enum StatusType {
 }
 
 export enum ErrorType {
+  BadRequest = 'BadRequest',
   Unauthorized = 'Unauthorized',
   Forbidden = 'Forbidden',
   NotFound = 'NotFound',
